@@ -85,15 +85,24 @@ export class ContactBookApp {
         }
     }
 
+    // deleteContact(id) {
+    //     if (confirm('Voulez-vous vraiment supprimer ce contact ?')) {
+    //         this.contactManager.deleteContact(id);
+    //         this.ui.removeContact(id);
+    //     }
+    // }
+
     deleteContact(id) {
-        if (confirm('Voulez-vous vraiment supprimer ce contact ?')) {
-            this.contactManager.deleteContact(id);
-            this.ui.removeContact(id);
-        }
+    console.log('═══════════════════════════════════');
+    console.log('🔥 deleteContact() APPELÉ');
+    console.log('ID reçu:', id);
+    console.log('Pile d\'appels:');
+    console.trace();
+    console.log('═══════════════════════════════════');
+    
+    if (confirm('Voulez-vous vraiment supprimer ce contact ?')) {
+        this.contactManager.deleteContact(id);
+        this.ui.removeContact(id);
     }
 }
-
-// ==================== INITIALISATION ====================
-document.addEventListener('DOMContentLoaded', () => {
-    new ContactBookApp();
-});
+}
