@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Book - Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a3a4a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #1e1e1e;
+            border: 3px solid #4a90e2;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(74, 144, 226, 0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2a4a5a 0%, #1a3a4a 100%);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #4a90e2;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            color: #87ceeb;
+            text-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .header .version {
+            display: inline-block;
+            background-color: #2d5016;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 2px solid #4a7c2d;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #2a2a2a;
+            border: 2px solid #3a5a6a;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: #4a90e2;
+            box-shadow: 0 5px 20px rgba(74, 144, 226, 0.2);
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #87ceeb;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a90e2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            background-color: #4a90e2;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .section-content {
+            color: #d0d0d0;
+            font-size: 16px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background-color: #1a3a4a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2a4a5a;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #4a90e2;
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #87ceeb;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+
+        .code-block {
+            background-color: #1a1a1a;
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            color: #87ceeb;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #1a3a4a;
+            border-left: 4px solid #4a90e2;
+            border-radius: 5px;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #4a90e2;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background-color: #2d5016;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 2px solid #4a7c2d;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .warning-box {
+            background-color: #3a2a1a;
+            border: 2px solid #e2904a;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #ffcc99;
+        }
+
+        .warning-box strong {
+            color: #ff9966;
+        }
+
+        .footer {
+            background-color: #2a4a5a;
+            padding: 30px;
+            text-align: center;
+            border-top: 3px solid #4a90e2;
+            border-radius: 0 0 12px 12px;
+            color: #87ceeb;
+        }
+
+        .button-demo {
+            display: inline-block;
+            background-color: #2d5016;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #4a7c2d;
+            text-decoration: none;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .button-demo:hover {
+            background-color: #3d6b22;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📇 Contact Book</h1>
+            <p style="color: #b0d4e8; font-size: 18px; margin-top: 10px;">
+                Gestionnaire de contacts moderne et élégant
+            </p>
+            <span class="version">v1.0.0 - 2025</span>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #4a90e2;">
+                <p style="color: #87ceeb; font-size: 14px;">
+                    Développé par <strong>Paul Mancien</strong> & <strong>Alexandre Sellier</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- PRÉSENTATION -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">📘</span>
+                    Présentation
+                </h2>
+                <div class="section-content">
+                    <p>
+                        <strong>Contact Book</strong> est une application web de gestion de contacts développée avec une architecture orientée objet moderne. Elle permet de créer, visualiser et supprimer des contacts avec une interface utilisateur intuitive et esthétique.
+                    </p>
+                    <br>
+                    <p>
+                        L'application utilise le stockage local du navigateur pour persister les données et offre une expérience utilisateur fluide avec validation en temps réel.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FONCTIONNALITÉS -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">✨</span>
+                    Fonctionnalités
+                </h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>➕ Ajout de contacts</h3>
+                        <p>Créez de nouveaux contacts avec nom, prénom, email et téléphone via un formulaire modal élégant.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📋 Visualisation</h3>
+                        <p>Consultez tous vos contacts dans un tableau organisé et facile à parcourir.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🗑️ Suppression</h3>
+                        <p>Supprimez des contacts avec confirmation pour éviter les erreurs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✅ Validation temps réel</h3>
+                        <p>Le formulaire se valide automatiquement et n'autorise la soumission que si tous les champs sont remplis.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💾 Persistance</h3>
+                        <p>Les contacts sont sauvegardés automatiquement dans le navigateur (localStorage).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📱 Responsive</h3>
+                        <p>Interface adaptée à tous les écrans (desktop, tablette, mobile).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GUIDE D'UTILISATION -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">📖</span>
+                    Guide d'utilisation
+                </h2>
+                <div class="section-content">
+                    <h3 style="color: #87ceeb; margin: 20px 0 10px 0;">Ajouter un contact</h3>
+                    <ol class="step-list">
+                        <li>Cliquez sur le bouton <strong style="color: #87ceeb;">+</strong> en haut à droite du tableau</li>
+                        <li>Une fenêtre modale s'ouvre avec un formulaire</li>
+                        <li>Remplissez tous les champs obligatoires (Nom, Prénom, Email, Téléphone)</li>
+                        <li>Le bouton "Valider" s'active automatiquement quand tous les champs sont remplis</li>
+                        <li>Cliquez sur "Valider" pour ajouter le contact</li>
+                    </ol>
+
+                    <h3 style="color: #87ceeb; margin: 20px 0 10px 0;">Supprimer un contact</h3>
+                    <ol class="step-list">
+                        <li>Localisez le contact dans le tableau</li>
+                        <li>Cliquez sur le bouton <strong style="color: #ff6b6b;">×</strong> dans la colonne "Actions"</li>
+                        <li>Confirmez la suppression dans la boîte de dialogue</li>
+                    </ol>
+
+                    <h3 style="color: #87ceeb; margin: 20px 0 10px 0;">Contacter par email</h3>
+                    <ol class="step-list">
+                        <li>Cliquez sur l'adresse email d'un contact dans le tableau</li>
+                        <li>Votre client email par défaut s'ouvre automatiquement</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ARCHITECTURE -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">🏗️</span>
+                    Architecture technique
+                </h2>
+                <div class="section-content">
+                    <p style="margin-bottom: 15px;">L'application suit une architecture <strong style="color: #87ceeb;">orientée objet modulaire</strong> avec séparation des responsabilités :</p>
+                    
+                    <div class="code-block">
+<strong style="color: #87ceeb;">classes/</strong>
+│
+├── <strong style="color: #4a90e2;">Contact.js</strong>
+│   └─→ Modèle de données (id, nom, prénom, email, téléphone)
+│
+├── <strong style="color: #4a90e2;">ContactManager.js</strong>
+│   └─→ Gestion CRUD + persistance localStorage
+│
+├── <strong style="color: #4a90e2;">UI.js</strong>
+│   └─→ Manipulation du DOM et affichage
+│
+├── <strong style="color: #4a90e2;">Modal.js</strong>
+│   └─→ Gestion de la fenêtre modale
+│
+├── <strong style="color: #4a90e2;">FormValidator.js</strong>
+│   └─→ Validation des formulaires
+│
+├── <strong style="color: #4a90e2;">ContactBookApp.js</strong>
+│   └─→ Orchestrateur principal de l'application
+│
+└── <strong style="color: #4a90e2;">main.js</strong>
+    └─→ Point d'entrée de l'application
+                    </div>
+
+                    <h3 style="color: #87ceeb; margin: 20px 0 10px 0;">Description des classes</h3>
+                    
+                    <div style="margin-top: 20px;">
+                        <div class="feature-card" style="margin-bottom: 15px;">
+                            <h3>📦 Contact</h3>
+                            <p>Représente un contact avec ses propriétés (id, nom, prénom, email, téléphone) et sa méthode de rendu HTML.</p>
+                        </div>
+                        
+                        <div class="feature-card" style="margin-bottom: 15px;">
+                            <h3>🗄️ ContactManager</h3>
+                            <p>Gère la collection de contacts (CRUD) et la persistance via localStorage.</p>
+                        </div>
+                        
+                        <div class="feature-card" style="margin-bottom: 15px;">
+                            <h3>🎨 UI</h3>
+                            <p>Responsable du rendu et de la manipulation du DOM pour l'affichage des contacts.</p>
+                        </div>
+                        
+                        <div class="feature-card" style="margin-bottom: 15px;">
+                            <h3>🪟 Modal</h3>
+                            <p>Contrôle l'ouverture et la fermeture de la fenêtre modale.</p>
+                        </div>
+                        
+                        <div class="feature-card" style="margin-bottom: 15px;">
+                            <h3>✓ FormValidator</h3>
+                            <p>Valide les champs du formulaire en temps réel.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>🎯 ContactBookApp</h3>
+                            <p>Classe principale qui orchestre toutes les interactions et coordonne les autres classes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TECHNOLOGIES -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">🛠️</span>
+                    Technologies utilisées
+                </h2>
+                <div class="section-content">
+                    <div style="margin: 20px 0;">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript ES6+</span>
+                        <span class="tech-badge">Modules ES6</span>
+                        <span class="tech-badge">LocalStorage API</span>
+                        <span class="tech-badge">POO (Programmation Orientée Objet)</span>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <strong>⚠️ Prérequis :</strong> Navigateur moderne supportant les modules ES6 (Chrome 61+, Firefox 60+, Safari 11+, Edge 16+)
+                    </div>
+                </div>
+            </div>
+
+            <!-- INSTALLATION -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">💻</span>
+                    Installation & Déploiement
+                </h2>
+                <div class="section-content">
+                    <h3 style="color: #87ceeb; margin-bottom: 15px;">Structure des fichiers</h3>
+                    <div class="code-block">
+<strong style="color: #87ceeb;">project/</strong>
+│
+├── <strong style="color: #4a90e2;">index.html</strong>
+├── <strong style="color: #4a90e2;">style.css</strong>
+│
+├── <strong style="color: #87ceeb;">assets/</strong>
+│   └── annuaire.png
+│
+└── <strong style="color: #87ceeb;">classes/</strong>
+    ├── Contact.js
+    ├── ContactManager.js
+    ├── UI.js
+    ├── Modal.js
+    ├── FormValidator.js
+    ├── ContactBookApp.js
+    └── main.js
+                    </div>
+
+                    <h3 style="color: #87ceeb; margin: 20px 0 10px 0;">Déploiement</h3>
+                    <ol class="step-list">
+                        <li>Téléchargez tous les fichiers en respectant la structure ci-dessus</li>
+                        <li>Ouvrez <code style="color: #4a90e2;">index.html</code> dans votre navigateur</li>
+                        <li>L'application est prête à l'emploi !</li>
+                    </ol>
+
+                    <div class="warning-box">
+                        <strong>⚠️ Important :</strong> Pour que les modules ES6 fonctionnent, vous devez servir l'application via un serveur HTTP local (ex: Live Server pour VS Code) et non en ouvrant directement le fichier HTML.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PERSONNALISATION -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">🎨</span>
+                    Personnalisation
+                </h2>
+                <div class="section-content">
+                    <h3 style="color: #87ceeb; margin-bottom: 15px;">Couleurs principales</h3>
+                    <p>Les couleurs de l'application peuvent être modifiées dans le fichier <code style="color: #4a90e2;">style.css</code> :</p>
+                    
+                    <div class="code-block">
+/* Palette de couleurs */
+--bg-primary: #1a1a1a;      /* Fond principal */
+--bg-secondary: #2a4a5a;    /* Sections */
+--accent: #4a90e2;          /* Bordures et accents */
+--text-light: #87ceeb;      /* Titres */
+--text-main: #e0e0e0;       /* Texte principal */
+--success: #2d5016;         /* Boutons validés */
+--danger: #8b0000;          /* Suppression */
+                    </div>
+
+                    <h3 style="color: #87ceeb; margin: 20px 0 10px 0;">Contact par défaut</h3>
+                    <p>Pour modifier le contact affiché par défaut, éditez la méthode <code style="color: #4a90e2;">loadContacts()</code> dans <strong>ContactManager.js</strong>.</p>
+                </div>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">💡</span>
+                    FAQ & Dépannage
+                </h2>
+                <div class="section-content">
+                    <div class="feature-card" style="margin-bottom: 15px;">
+                        <h3>❓ Les contacts ne se sauvegardent pas</h3>
+                        <p>Vérifiez que le localStorage est activé dans votre navigateur et que vous n'êtes pas en navigation privée.</p>
+                    </div>
+                    
+                    <div class="feature-card" style="margin-bottom: 15px;">
+                        <h3>❓ Le bouton Valider reste désactivé</h3>
+                        <p>Assurez-vous que tous les champs du formulaire sont bien remplis (pas d'espaces vides uniquement).</p>
+                    </div>
+                    
+                    <div class="feature-card" style="margin-bottom: 15px;">
+                        <h3>❓ Erreur de chargement des modules</h3>
+                        <p>Utilisez un serveur HTTP local. Les modules ES6 ne fonctionnent pas avec le protocole file://</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>❓ Comment réinitialiser l'application ?</h3>
+                        <p>Ouvrez la console du navigateur (F12) et tapez : <code style="color: #4a90e2;">localStorage.clear()</code> puis rechargez la page.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3 style="margin-bottom: 15px;">Contact Book Application</h3>
+            <p style="margin-bottom: 10px;">© 2025 Acme Corp. - Tous droits réservés</p>
+            <p style="font-size: 14px; color: #b0d4e8; margin-bottom: 15px;">
+                Développé avec ❤️ en JavaScript
+            </p>
+            <div style="padding-top: 15px; border-top: 1px solid #4a90e2;">
+                <p style="font-size: 13px; color: #87ceeb;">
+                    <strong>Créateurs :</strong> Paul Mancien & Alexandre Sellier
+                </p>
+                <p style="font-size: 12px; color: #b0d4e8; margin-top: 5px;">
+                    Documentation rédigée par Paul Mancien & Alexandre Sellier
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

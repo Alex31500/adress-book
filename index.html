@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Books</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/annuaire.png">
+</head>
+<body>
+    <div class="app-container">
+        <div class="contact-book">
+            <div class="contact-book-header">
+                <h1 class="contact-book-title">Contact book</h1>
+                <button class="btn-add" id="btnAdd">+</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="contactList">
+                    <!-- Les contacts seront ajoutés ici -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>(c) 2025 - Acme Corp.</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title">Nom:</span>
+                <button class="btn-close" id="btnClose">×</button>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Nom:</label>
+                    <input type="text" id="inputNom" placeholder="Entrez le nom" required>
+                </div>
+                <div class="form-group">
+                    <label>Prénom:</label>
+                    <input type="text" id="inputPrenom" placeholder="Entrez le prénom" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="inputEmail" placeholder="exemple@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Téléphone:</label>
+                    <input type="tel" id="inputTelephone" placeholder="+33 6 12 34 56 78" required>
+                </div>
+                <button type="submit" class="btn-validate">Valider</button>
+                <div class="validation-message" id="validationMessage" style="display: none;">
+                    N'est actif que si tous les champs sont remplis
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script type="module" src="classes/main.js"></script>
+</body>
+</html>
