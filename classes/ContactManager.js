@@ -24,6 +24,10 @@
                 localStorage.setItem('contacts', JSON.stringify(this.contacts));
             }
 
+            /**
+             * 
+             * @returns {Contact[]}
+             */
             loadContacts() {
                 const stored = localStorage.getItem('contacts');
                 if (stored) {

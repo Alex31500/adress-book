@@ -12,6 +12,10 @@
                 this.contactList.insertAdjacentHTML('beforeend', contact.toHTML());
             }
 
+            /**
+             * Remove a contact
+             * @param {int} id 
+             */
             removeContact(id) {
                 const row = this.contactList.querySelector(`tr[data-id="${id}"]`);
                 if (row) {
